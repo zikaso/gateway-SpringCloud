@@ -37,7 +37,7 @@ public class GetwayApplication {
 
     }
 
-   // this an automatique configuration by  the name in Client Url get mothde
+   // this an automatique configuration by  the name in Client Url get mothde ex:http://localhost:8080/FACTORA-SERVICE/factoras
   @Bean
   DiscoveryClientRouteDefinitionLocator definitionLocator
           (ReactiveDiscoveryClient  discoveryClient, DiscoveryLocatorProperties properties ){
