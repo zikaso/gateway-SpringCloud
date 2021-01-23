@@ -21,8 +21,8 @@ public class GetwayApplication {
 
     // this is manual configuration has been disabled
    // @Bean
-    RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
-        return  routeLocatorBuilder.routes()
+  //  RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
+      //  return  routeLocatorBuilder.routes()
 
                 // this is manual configuration
 
@@ -35,7 +35,7 @@ public class GetwayApplication {
               //  .route((r)-> r.path("/factoras/**").uri("lb://FACTORA-SERVICE"))
               //  .build();
 
-    }
+  // }
 
    // this an automatique configuration by  the name in Client Url get mothde ex:http://localhost:8080/FACTORA-SERVICE/factoras
   @Bean
