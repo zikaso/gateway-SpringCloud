@@ -31,9 +31,9 @@ public class GetwayApplication {
                // .build();
 
               //this configuration with leadBalancer
-                .route((r)-> r.path("/personnas/**").uri("lb://PERSONNA-SERVICE"))
-                .route((r)-> r.path("/factoras/**").uri("lb://FACTORA-SERVICE"))
-                .build();
+              //  .route((r)-> r.path("/personnas/**").uri("lb://PERSONNA-SERVICE"))
+              //  .route((r)-> r.path("/factoras/**").uri("lb://FACTORA-SERVICE"))
+              //  .build();
 
     }
 
