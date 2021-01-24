@@ -19,30 +19,41 @@ public class GetwayApplication {
         SpringApplication.run(GetwayApplication.class, args);
     }
 
+    @Bean
+    DiscoveryClientRouteDefinitionLocator definitionLocator
+            (ReactiveDiscoveryClient  discoveryClient, DiscoveryLocatorProperties properties ){
+        return  new  DiscoveryClientRouteDefinitionLocator(discoveryClient , properties);
+    }
+
+
+    /**
     // this is manual configuration has been disabled
-   // @Bean
-  //  RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
-      //  return  routeLocatorBuilder.routes()
+    @Bean
+    //this configuration with leadBalancer
+    RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
+        return  routeLocatorBuilder.routes()
+                //This configuration with leadBalancer
+                .route((r)-> r.path("/personnas/**").uri("lb://PERSONNA-SERVICE"))
+                .route((r)-> r.path("/productoes/**").uri("lb://PRODUCTO-SERVICE"))
 
-                // this is manual configuration
-
+                // This is manual configuration
                 //.route((r)-> r.path("/personnas/**").uri("http://localhost:8081/"))
-                //.route((r)-> r.path("/factoras/**").uri("http://localhost:8082/"))
-               // .build();
+                //.route((r)-> r.path("/productoes/**").uri("http://localhost:8082/"))
 
-              //this configuration with leadBalancer
-              //  .route((r)-> r.path("/personnas/**").uri("lb://PERSONNA-SERVICE"))
-              //  .route((r)-> r.path("/factoras/**").uri("lb://FACTORA-SERVICE"))
-              //  .build();
+                // ex:http://localhost:8080/personnas
+                // ex:http://localhost:8080/productoes
+                // ex:http://localhost:8080/factoras
 
-  // }
-
-   // this an automatique configuration by  the name in Client Url get mothde ex:http://localhost:8080/FACTORA-SERVICE/factoras
-  @Bean
-  DiscoveryClientRouteDefinitionLocator definitionLocator
-          (ReactiveDiscoveryClient  discoveryClient, DiscoveryLocatorProperties properties ){
-     return  new  DiscoveryClientRouteDefinitionLocator(discoveryClient , properties);
+                .build();
   }
+
+
+   // This an automatique configuration by  the Service name in the Url get mothde
+   // ex:http://localhost:8080/PERSONNA-SERVICE/personnas
+   // ex:http://localhost:8080/PRODUCTO-SERVICE/productoes
+   // ex:http://localhost:8080/FACTORA-SERVICE/factoras
+ **/
+
 
 
 
